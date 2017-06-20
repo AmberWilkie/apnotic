@@ -4,11 +4,12 @@ require 'json'
 module Apnotic
 
   class Notification
-    attr_reader :token
+    attr_reader :token, :topic
     attr_accessor :alert, :badge, :sound, :content_available, :category, :custom_payload, :url_args, :mutable_content
     attr_accessor :apns_id, :expiration, :priority, :topic, :apns_collapse_id
 
-    def initialize(token)
+    def initialize(token, apns_topic)
+      @topic = apns_topic
       @token   = token
       @apns_id = SecureRandom.uuid
     end
